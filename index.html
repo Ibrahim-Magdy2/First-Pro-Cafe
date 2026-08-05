@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="YourBrand is a premium luxury cafe experience with artisanal coffee, signature desserts, curated breakfast, and a refined modern atmosphere."
+    />
+    <meta
+      name="keywords"
+      content="luxury cafe, premium coffee, artisan desserts, YourBrand, cafe menu, international cafe"
+    />
+    <meta name="theme-color" content="#0a0f1f" />
+    <title>YourBrand | Premium Luxury Cafe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <nav class="nav container" aria-label="Primary navigation">
+          <a href="#home" class="brand" aria-label="YourBrand home">
+            <span class="brand-mark">YB</span>
+            <span class="brand-text">YourBrand</span>
+          </a>
+          <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="nav-links-wrap">
+            <ul class="nav-links">
+              <li><a href="#home" data-i18n="nav.home">Home</a></li>
+              <li><a href="#features" data-i18n="nav.features">Features</a></li>
+              <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+              <li><a href="#about" data-i18n="nav.about">About</a></li>
+              <li><a href="#cart" data-i18n="nav.cart">Cart</a></li>
+              <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+              <button class="icon-button theme-toggle" aria-label="Toggle color theme">
+                <span class="theme-icon">☀️</span>
+              </button>
+              <button class="icon-button language-toggle" aria-label="Toggle language">
+                <span class="language-text">AR</span>
+              </button>
+              <button class="icon-button cart-badge-button" aria-label="Open cart overview">
+                <span>🛒</span>
+                <span class="cart-counter" id="cartCounterTop">0</span>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" id="home">
+          <div class="hero-slider">
+            <article class="hero-slide active" data-bg="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80">
+              <div class="hero-overlay"></div>
+              <div class="container hero-content">
+                <p class="eyebrow" data-i18n="hero.eyebrow">Luxury Espresso House</p>
+                <h1 class="hero-title" data-i18n="hero.title">Crafted for your elegant rituals</h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">A world of refined beans, signature desserts and moments worth savoring with every sip.</p>
+                <div class="hero-buttons">
+                  <a href="#menu" class="btn btn-primary" data-i18n="hero.primaryBtn">Explore Menu</a>
+                  <a href="#about" class="btn btn-secondary" data-i18n="hero.secondaryBtn">Discover Our Story</a>
+                </div>
+              </div>
+            </article>
+            <article class="hero-slide" data-bg="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80">
+              <div class="hero-overlay"></div>
+              <div class="container hero-content">
+                <p class="eyebrow" data-i18n="hero.eyebrow2">Signature Sweets</p>
+                <h1 class="hero-title" data-i18n="hero.title2">Golden textures & elegant indulgence</h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle2">Turn every afternoon into an experience with handcrafted pastries and rare cocoa moments.</p>
+                <div class="hero-buttons">
+                  <a href="#special" class="btn btn-primary" data-i18n="hero.primaryBtn2">See Special Offers</a>
+                  <a href="#gallery" class="btn btn-secondary" data-i18n="hero.secondaryBtn2">View Gallery</a>
+                </div>
+              </div>
+            </article>
+            <article class="hero-slide" data-bg="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1600&q=80">
+              <div class="hero-overlay"></div>
+              <div class="container hero-content">
+                <p class="eyebrow" data-i18n="hero.eyebrow3">Quiet Luxury</p>
+                <h1 class="hero-title" data-i18n="hero.title3">Spaces designed to linger softly</h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle3">Private booths, moonlit corners, and globally inspired service for the most elevated coffee culture.</p>
+                <div class="hero-buttons">
+                  <a href="#contact" class="btn btn-primary" data-i18n="hero.primaryBtn3">Reserve A Table</a>
+                  <a href="#reviews" class="btn btn-secondary" data-i18n="hero.secondaryBtn3">Read Reviews</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="slider-dots" aria-label="Hero slider pagination"></div>
+        </section>
+
+        <section class="features section container" id="features">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="features.eyebrow">Why YourBrand</p>
+            <h2 data-i18n="features.title">Refined, immersive, unforgettable</h2>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="feature-icon">☕</div>
+              <h3 data-i18n="features.card1.title">Signature Roasts</h3>
+              <p data-i18n="features.card1.text">Single-origin beans expertly curated for a full-bodied, balanced experience.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">✨</div>
+              <h3 data-i18n="features.card2.title">Private Dining Mood</h3>
+              <p data-i18n="features.card2.text">Ambient lighting, elegant plating, and a serene lounge to enjoy slow moments.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">🥐</div>
+              <h3 data-i18n="features.card3.title">Chef’s Daily Atelier</h3>
+              <p data-i18n="features.card3.text">Fresh bakery and breakfast from seasonal ingredients with luxury presentation.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="about section" id="about">
+          <div class="container split-layout">
+            <div>
+              <p class="eyebrow" data-i18n="about.eyebrow">Our craft</p>
+              <h2 data-i18n="about.title">A luxury identity shaped by taste</h2>
+              <p data-i18n="about.text">YourBrand blends modern art and hospitality to offer an international coffee destination where every detail feels curated, personal, and memorable.</p>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <strong class="count-up" data-target="18">0</strong>
+                <span data-i18n="about.stat1">Years of Craft</span>
+              </div>
+              <div class="stat-card">
+                <strong class="count-up" data-target="120">0</strong>
+                <span data-i18n="about.stat2">Signature Recipes</span>
+              </div>
+              <div class="stat-card">
+                <strong class="count-up" data-target="42">0</strong>
+                <span data-i18n="about.stat3">Global Partnerships</span>
+              </div>
+              <div class="stat-card">
+                <strong class="count-up" data-target="98">0</strong>
+                <span data-i18n="about.stat4">Guest Satisfaction</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="menu section container" id="menu">
+          <div class="section-heading menu-head">
+            <div>
+              <p class="eyebrow" data-i18n="menu.eyebrow">Curated menu</p>
+              <h2 data-i18n="menu.title">Find your signature indulgence</h2>
+            </div>
+            <div class="menu-controls">
+              <input type="search" id="menuSearch" placeholder="Search menu" aria-label="Search products" />
+            </div>
+          </div>
+          <div class="filters" id="menuFilters" aria-label="Menu categories">
+            <button class="filter-chip active" data-category="all" data-i18n="menu.all">All</button>
+            <button class="filter-chip" data-category="Coffee" data-i18n="menu.coffee">Coffee</button>
+            <button class="filter-chip" data-category="Espresso" data-i18n="menu.espresso">Espresso</button>
+            <button class="filter-chip" data-category="Hot Drinks" data-i18n="menu.hot">Hot Drinks</button>
+            <button class="filter-chip" data-category="Cold Drinks" data-i18n="menu.cold">Cold Drinks</button>
+            <button class="filter-chip" data-category="Desserts" data-i18n="menu.desserts">Desserts</button>
+            <button class="filter-chip" data-category="Breakfast" data-i18n="menu.breakfast">Breakfast</button>
+            <button class="filter-chip" data-category="Sandwiches" data-i18n="menu.sandwiches">Sandwiches</button>
+          </div>
+          <div class="menu-grid skeleton-grid" id="menuGrid" aria-live="polite"></div>
+        </section>
+
+        <section class="special section" id="special">
+          <div class="container">
+            <div class="section-heading">
+              <p class="eyebrow" data-i18n="special.eyebrow">Today’s special</p>
+              <h2 data-i18n="special.title">Signature moments at golden hour</h2>
+            </div>
+            <div class="special-layout">
+              <div class="special-card">
+                <span class="special-badge" data-i18n="special.tag">Limited time</span>
+                <h3 data-i18n="special.offerTitle">Cocoa velvet & vanilla cloud</h3>
+                <p data-i18n="special.offerText">Enjoy a curated tasting set with premium hot chocolate, truffle cake, and a house-exclusive latte art performance.</p>
+              </div>
+              <div class="special-card secondary">
+                <h3 data-i18n="special.popularTitle">Popular products</h3>
+                <ul>
+                  <li data-i18n="special.item1">Crowned Oat Latte</li>
+                  <li data-i18n="special.item2">Velvet Burnt Cheesecake</li>
+                  <li data-i18n="special.item3">Golden Brioche Toast</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="cart-section section container" id="cart">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="cart.eyebrow">Shopping cart</p>
+            <h2 data-i18n="cart.title">Your carefully selected indulgences</h2>
+          </div>
+          <div class="cart-layout">
+            <div class="cart-items-panel glass-card">
+              <div class="cart-actions-top">
+                <button id="emptyCartBtn" class="btn btn-secondary" data-i18n="cart.empty">Empty cart</button>
+                <button id="clearCartBtn" class="btn btn-secondary" data-i18n="cart.clear">Clear cart</button>
+              </div>
+              <div id="cartItems" class="cart-items"></div>
+            </div>
+            <aside class="summary-panel glass-card">
+              <h3 data-i18n="cart.summary">Order summary</h3>
+              <div class="summary-row"><span data-i18n="cart.subtotal">Subtotal</span><strong id="subtotal">EGB 0.00</strong></div>
+              <div class="summary-row"><span data-i18n="cart.total">Total</span><strong id="total">EGB 0.00</strong></div>
+              <a href="#checkout" class="btn btn-primary full-width" data-i18n="cart.checkoutBtn">Proceed to checkout</a>
+            </aside>
+          </div>
+        </section>
+
+        <section class="checkout section container" id="checkout">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="checkout.eyebrow">Checkout</p>
+            <h2 data-i18n="checkout.title">Complete your order</h2>
+          </div>
+          <div class="checkout-layout">
+            <form id="checkoutForm" class="glass-card checkout-form">
+              <label>
+                <span data-i18n="checkout.fullName">Full Name</span>
+                <input type="text" name="fullName" required />
+              </label>
+              <label>
+                <span data-i18n="checkout.email">Email</span>
+                <input type="email" name="email" required />
+              </label>
+              <label>
+                <span data-i18n="checkout.phone">Phone</span>
+                <input type="tel" name="phone" required />
+              </label>
+              <label>
+                <span data-i18n="checkout.address">Address</span>
+                <input type="text" name="address" required />
+              </label>
+              <label>
+                <span data-i18n="checkout.notes">Notes</span>
+                <textarea name="notes" rows="4" placeholder="Any allergies or special instructions" data-i18n="Notes"></textarea>
+              </label>
+              <button type="submit" class="btn btn-primary" data-i18n="checkout.placeOrder">Place Order</button>
+            </form>
+
+            <div class="glass-card order-summary">
+              <h3 data-i18n="checkout.summaryTitle">Order summary</h3>
+              <div id="checkoutOrderSummary" class="checkout-order-summary"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="gallery section container" id="gallery">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="gallery.eyebrow">Gallery</p>
+            <h2 data-i18n="gallery.title">A glimpse into the atmosphere</h2>
+          </div>
+          <div class="gallery-grid">
+            <button class="gallery-item" data-lightbox="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=900&q=80"><img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=900&q=80" alt="Premium cafe interior" loading="lazy" /></button>
+            <button class="gallery-item" data-lightbox="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=900&q=80"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=900&q=80" alt="Dessert presentation" loading="lazy" /></button>
+            <button class="gallery-item" data-lightbox="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Opened espresso shot" loading="lazy" /></button>
+          </div>
+        </section>
+
+        <section class="reviews section container" id="reviews">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="reviews.eyebrow">Testimonials</p>
+            <h2 data-i18n="reviews.title">Guests who return for the ritual</h2>
+          </div>
+          <div class="testimonials-slider">
+            <article class="testimonial active">
+              <p data-i18n="Review1">“YourBrand delivers quiet luxury in every detail—from the velvet crema to the intimate lounge energy.”</p>
+              <span>— Laila S.</span>
+            </article>
+            <article class="testimonial">
+              <p data-i18n="Review2">“The best coffee destination for business meetings and refined weekend pauses.”</p>
+              <span>— Omar K.</span>
+            </article>
+            <article class="testimonial">
+              <p data-i18n="Review3">“An exceptional balance of design, comfort, and global coffee storytelling.”</p>
+              <span>— Mina A.</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="faq section container" id="faq">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="faq.eyebrow">FAQ</p>
+            <h2 data-i18n="faq.title">Questions we get asked often</h2>
+          </div>
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary data-i18n="faq.q1">Do you offer allergy-friendly options?</summary>
+              <p data-i18n="faq.a1">Yes, our team can suggest ingredient-conscious choices and note preferences in your order.</p>
+            </details>
+            <details class="faq-item">
+              <summary data-i18n="faq.q2">Can I order for take-away?</summary>
+              <p data-i18n="faq.a2">Definitely—our menu supports both lounge dining and seamless take-away service.</p>
+            </details>
+            <details class="faq-item">
+              <summary data-i18n="faq.q3">Are the pastries baked fresh daily?</summary>
+              <p data-i18n="faq.a3">Every pastry is prepared fresh in-house each morning with premium ingredients.</p>
+            </details>
+          </div>
+        </section>
+
+        <section class="map section container" id="contact">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="contact.eyebrow">Visit us</p>
+            <h2 data-i18n="contact.title">Find your preferred corner</h2>
+          </div>
+          <div class="map-frame glass-card">
+            <iframe
+              title="YourBrand location map"
+              src="https://www.google.com/maps?q=Cairo,+Egypt&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </section>
+
+        <section class="newsletter section container">
+          <div class="newsletter-card glass-card">
+            <div>
+              <p class="eyebrow" data-i18n="newsletter.eyebrow">Newsletter</p>
+              <h2 data-i18n="newsletter.title">Stay in the loop for rare drops</h2>
+            </div>
+            <form id="newsletterForm" class="newsletter-form">
+              <input type="email" aria-label="Email address" placeholder="Enter your email" required />
+              <button type="submit" class="btn btn-primary" data-i18n="newsletter.btn">Join now</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="instagram section container">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="instagram.eyebrow">Instagram</p>
+            <h2 data-i18n="instagram.title">Follow the mood</h2>
+          </div>
+          <div class="instagram-grid">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=80" alt="Coffee setup from Instagram" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=80" alt="Espresso detail" loading="lazy" />
+            <img src="pexels-unaizat97-8761385.jpg" alt="Dessert and coffee arrangement" loading="lazy" />
+          </div>
+        </section>
+      </main>
+
+      <button class="floating-cart" id="floatingCartBtn" aria-label="Open cart">
+        <span>🛒</span>
+        <span class="floating-cart-count" id="floatingCartCount">0</span>
+      </button>
+
+      <div class="toast-stack" id="toastStack"></div>
+
+      <div class="modal hidden" id="quickViewModal" aria-hidden="true">
+        <div class="modal-card">
+          <button class="modal-close" aria-label="Close quick view">×</button>
+          <div id="quickViewContent"></div>
+        </div>
+      </div>
+
+      <div class="lightbox hidden" id="lightboxModal" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Close gallery">×</button>
+        <img id="lightboxImage" src="" alt="Expanded gallery scene" />
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
