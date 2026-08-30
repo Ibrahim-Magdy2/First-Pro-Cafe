@@ -373,6 +373,56 @@
       </div>
     </div>
 
+<!-- AI Assistant -->
+<button class="ai-fab" id="aiFab" aria-label="Open YourBrand AI Assistant">
+  <span>✦</span>
+</button>
+
+<div class="ai-chat" id="aiChat" aria-hidden="true">
+  <div class="ai-header">
+    <div class="ai-header-info">
+      <div class="ai-avatar">✦</div>
+      <div>
+        <strong>YourBrand AI</strong>
+        <small>AI Café Assistant</small>
+      </div>
+    </div>
+
+    <button class="ai-close" id="aiClose" aria-label="Close AI Assistant">
+      ×
+    </button>
+  </div>
+
+  <div class="ai-messages" id="aiMessages">
+    <div class="ai-message bot">
+      <div class="ai-message-avatar">✦</div>
+      <div class="ai-bubble">
+        أهلاً بك في YourBrand ☕<br>
+        أنا مساعدك الذكي. أقدر أساعدك في المنيو، الأسعار، المشروبات، الحلويات، الطلبات ومعلومات الكافيه.
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-suggestions" id="aiSuggestions">
+    <button data-question="ما هي المشروبات الموجودة؟">☕ المشروبات</button>
+    <button data-question="ما هي الحلويات؟">🍰 الحلويات</button>
+    <button data-question="ما هي الأسعار؟">💰 الأسعار</button>
+    <button data-question="معلومات عن YourBrand">✨ عن الكافيه</button>
+  </div>
+
+  <form class="ai-input-area" id="aiForm">
+    <input
+      type="text"
+      id="aiInput"
+      placeholder="اكتب سؤالك..."
+      autocomplete="off"
+    />
+    <button type="submit" aria-label="Send">
+      ➤
+    </button>
+  </form>
+</div>
+
     <script src="js/script.js"></script>
   </body>
 </html>

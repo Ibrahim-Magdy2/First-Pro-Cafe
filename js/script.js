@@ -657,3 +657,773 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+/* =========================================================
+   YOURBRAND AI ASSISTANT
+   Local JavaScript AI
+   No API / No Backend
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const aiFab = document.getElementById("aiFab");
+  const aiChat = document.getElementById("aiChat");
+  const aiClose = document.getElementById("aiClose");
+  const aiForm = document.getElementById("aiForm");
+  const aiInput = document.getElementById("aiInput");
+  const aiMessages = document.getElementById("aiMessages");
+  const aiSuggestions = document.getElementById("aiSuggestions");
+
+  if (!aiFab || !aiChat || !aiForm) return;
+
+
+  /* ---------------------------------------------------------
+     OPEN / CLOSE
+     --------------------------------------------------------- */
+
+  function openAI() {
+    aiChat.classList.add("open");
+    aiChat.setAttribute("aria-hidden", "false");
+
+    setTimeout(() => {
+      aiInput.focus();
+    }, 250);
+  }
+
+  function closeAI() {
+    aiChat.classList.remove("open");
+    aiChat.setAttribute("aria-hidden", "true");
+  }
+
+  aiFab.addEventListener("click", () => {
+
+    if (aiChat.classList.contains("open")) {
+      closeAI();
+    } else {
+      openAI();
+    }
+
+  });
+
+  aiClose.addEventListener("click", closeAI);
+
+
+  /* ---------------------------------------------------------
+     ADD MESSAGE
+     --------------------------------------------------------- */
+
+  function addMessage(text, type = "bot") {
+
+    const message = document.createElement("div");
+
+    message.className = `ai-message ${type}`;
+
+    if (type === "bot") {
+
+      message.innerHTML = `
+        <div class="ai-message-avatar">✦</div>
+        <div class="ai-bubble">${text}</div>
+      `;
+
+    } else {
+
+      message.innerHTML = `
+        <div class="ai-bubble">${escapeHTML(text)}</div>
+      `;
+
+    }
+
+    aiMessages.appendChild(message);
+
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+  }
+
+
+  /* ---------------------------------------------------------
+     TYPING EFFECT
+     --------------------------------------------------------- */
+
+  function showTyping() {
+
+    const typing = document.createElement("div");
+
+    typing.className = "ai-message";
+    typing.id = "aiTyping";
+
+    typing.innerHTML = `
+      <div class="ai-message-avatar">✦</div>
+
+      <div class="ai-bubble ai-typing">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    `;
+
+    aiMessages.appendChild(typing);
+
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+  }
+
+
+  function removeTyping() {
+
+    const typing = document.getElementById("aiTyping");
+
+    if (typing) {
+      typing.remove();
+    }
+
+  }
+
+
+  /* ---------------------------------------------------------
+     SECURITY
+     --------------------------------------------------------- */
+
+  function escapeHTML(text) {
+
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+  }
+
+
+  /* ---------------------------------------------------------
+     YOURBRAND KNOWLEDGE BASE
+     --------------------------------------------------------- */
+
+  const yourBrandKnowledge = {
+
+    name: "YourBrand",
+
+    type: "premium luxury cafe",
+
+    location: "Cairo, Egypt",
+
+    description:
+      "YourBrand is a premium luxury cafe offering artisanal coffee, signature desserts, curated breakfast, and a refined modern atmosphere.",
+
+    services: [
+      "Premium coffee",
+      "Espresso drinks",
+      "Hot drinks",
+      "Cold drinks",
+      "Signature desserts",
+      "Breakfast",
+      "Sandwiches",
+      "Take-away service",
+      "Lounge dining"
+    ],
+
+    atmosphere:
+      "YourBrand offers a refined modern atmosphere with ambient lighting, elegant plating, private booths, moonlit corners, and a serene lounge.",
+
+    coffee:
+      "YourBrand serves carefully curated single-origin beans with a full-bodied and balanced coffee experience.",
+
+    desserts:
+      "YourBrand offers handcrafted pastries, premium desserts, truffle cake, burnt cheesecake, and seasonal bakery selections.",
+
+    breakfast:
+      "YourBrand offers curated breakfast selections prepared with seasonal ingredients and presented in a refined style.",
+
+    special:
+      "Today's special is Cocoa Velvet & Vanilla Cloud, a curated tasting set featuring premium hot chocolate, truffle cake, and a house-exclusive latte art performance.",
+
+    popular: [
+      "Crowned Oat Latte",
+      "Velvet Burnt Cheesecake",
+      "Golden Brioche Toast"
+    ],
+
+    allergy:
+      "Our team can suggest ingredient-conscious choices and note preferences in your order.",
+
+    takeaway:
+      "Yes. YourBrand supports both lounge dining and take-away service.",
+
+    freshness:
+      "Our pastries are prepared fresh in-house each morning with premium ingredients.",
+
+    years: 18,
+
+    recipes: 120,
+
+    partnerships: 42,
+
+    satisfaction: 98
+
+  };
+
+
+  /* ---------------------------------------------------------
+     AI BRAIN
+     --------------------------------------------------------- */
+
+  function getAIResponse(question) {
+
+    const q = question
+      .toLowerCase()
+      .trim();
+
+
+    /* Greeting */
+
+    if (
+      q.includes("hello") ||
+      q.includes("hi") ||
+      q.includes("hey") ||
+      q.includes("مرحبا") ||
+      q.includes("اهلا") ||
+      q.includes("أهلا") ||
+      q.includes("السلام عليكم")
+    ) {
+
+      return `
+        أهلاً وسهلاً بك في <strong>YourBrand</strong> ☕✨<br>
+        أنا مساعد YourBrand، ويمكنني مساعدتك في معرفة المنيو، المشروبات، الحلويات، العروض ومعلومات الكافيه.
+      `;
+
+    }
+
+
+    /* About */
+
+    if (
+      q.includes("about") ||
+      q.includes("yourbrand") ||
+      q.includes("who are you") ||
+      q.includes("عن الكافيه") ||
+      q.includes("عن الكافى") ||
+      q.includes("معلومات عن") ||
+      q.includes("مين انت")
+    ) {
+
+      return `
+        <strong>YourBrand</strong> هو كافيه فاخر بتجربة عصرية راقية ☕✨<br><br>
+
+        نقدم القهوة المختصة، المشروبات، الحلويات المميزة،
+        الإفطار والساندويتشات في أجواء هادئة وأنيقة.
+      `;
+
+    }
+
+
+    /* Coffee */
+
+    if (
+      q.includes("coffee") ||
+      q.includes("قهوة") ||
+      q.includes("كوفي") ||
+      q.includes("مشروبات القهوة")
+    ) {
+
+      return `
+        ☕ <strong>القهوة في YourBrand</strong><br><br>
+
+        نعتمد على حبوب مختارة بعناية ونقدم تجربة قهوة متوازنة وغنية.<br><br>
+
+        لدينا اختيارات مثل:
+        <br>• Espresso
+        <br>• Signature Coffee
+        <br>• Latte
+        <br>• Crowned Oat Latte
+      `;
+
+    }
+
+
+    /* Espresso */
+
+    if (
+      q.includes("espresso") ||
+      q.includes("إسبريسو") ||
+      q.includes("اسبريسو")
+    ) {
+
+      return `
+        ☕ نعم، لدينا قسم خاص بـ <strong>Espresso</strong>
+        ضمن قائمة YourBrand.<br><br>
+
+        يمكنك مشاهدة جميع الاختيارات والأسعار من قسم
+        <strong>Menu</strong>.
+      `;
+
+    }
+
+
+    /* Hot drinks */
+
+    if (
+      q.includes("hot drink") ||
+      q.includes("hot drinks") ||
+      q.includes("مشروبات ساخنة") ||
+      q.includes("ساخن")
+    ) {
+
+      return `
+        🔥 لدينا مجموعة من المشروبات الساخنة،
+        بالإضافة إلى المشروبات المعتمدة على الإسبريسو والـ premium hot chocolate.
+      `;
+
+    }
+
+
+    /* Cold drinks */
+
+    if (
+      q.includes("cold drink") ||
+      q.includes("cold drinks") ||
+      q.includes("مشروبات باردة") ||
+      q.includes("بارد")
+    ) {
+
+      return `
+        🧊 لدينا مجموعة من المشروبات الباردة داخل قائمة YourBrand.
+        يمكنك تصفح قسم <strong>Cold Drinks</strong> لمعرفة المنتجات المتاحة.
+      `;
+
+    }
+
+
+    /* Desserts */
+
+    if (
+      q.includes("dessert") ||
+      q.includes("desserts") ||
+      q.includes("حلويات") ||
+      q.includes("حلو") ||
+      q.includes("كيك") ||
+      q.includes("cake")
+    ) {
+
+      return `
+        🍰 <strong>حلويات YourBrand</strong><br><br>
+
+        نقدم حلويات ومعجنات مصنوعة بعناية، ومن أشهر الاختيارات لدينا:<br>
+
+        • Velvet Burnt Cheesecake<br>
+        • Truffle Cake<br>
+        • Handcrafted Pastries<br>
+        • Seasonal Bakery
+      `;
+
+    }
+
+
+    /* Breakfast */
+
+    if (
+      q.includes("breakfast") ||
+      q.includes("فطار") ||
+      q.includes("إفطار") ||
+      q.includes("افطار")
+    ) {
+
+      return `
+        🥐 YourBrand يقدم مجموعة من اختيارات الإفطار
+        المصنوعة من مكونات موسمية مع تقديم فاخر.
+      `;
+
+    }
+
+
+    /* Sandwich */
+
+    if (
+      q.includes("sandwich") ||
+      q.includes("sandwiches") ||
+      q.includes("ساندوتش") ||
+      q.includes("ساندويتش")
+    ) {
+
+      return `
+        🥪 نعم، يوجد قسم خاص بالـ <strong>Sandwiches</strong>
+        داخل قائمة YourBrand.
+      `;
+
+    }
+
+
+    /* Popular */
+
+    if (
+      q.includes("popular") ||
+      q.includes("best") ||
+      q.includes("recommend") ||
+      q.includes("مشهور") ||
+      q.includes("الأفضل") ||
+      q.includes("افضل") ||
+      q.includes("ترشح")
+    ) {
+
+      return `
+        ⭐ من الاختيارات الشعبية في YourBrand:<br><br>
+
+        • <strong>Crowned Oat Latte</strong><br>
+        • <strong>Velvet Burnt Cheesecake</strong><br>
+        • <strong>Golden Brioche Toast</strong>
+      `;
+
+    }
+
+
+    /* Special offer */
+
+    if (
+      q.includes("special") ||
+      q.includes("offer") ||
+      q.includes("offers") ||
+      q.includes("عرض") ||
+      q.includes("العرض") ||
+      q.includes("عروض")
+    ) {
+
+      return `
+        ✨ <strong>Today's Special</strong><br><br>
+
+        Cocoa Velvet & Vanilla Cloud 🍫<br><br>
+
+        تجربة تذوق مميزة تشمل:
+        <br>• Premium Hot Chocolate
+        <br>• Truffle Cake
+        <br>• House-exclusive Latte Art Performance
+      `;
+
+    }
+
+
+    /* Takeaway */
+
+    if (
+      q.includes("takeaway") ||
+      q.includes("take away") ||
+      q.includes("تيك اواي") ||
+      q.includes("تيك أواي") ||
+      q.includes("خارج")
+    ) {
+
+      return `
+        🛍️ نعم، YourBrand يدعم خدمة <strong>Take-away</strong>
+        بالإضافة إلى تجربة الـ Lounge Dining.
+      `;
+
+    }
+
+
+    /* Allergy */
+
+    if (
+      q.includes("allergy") ||
+      q.includes("allergic") ||
+      q.includes("حساسية") ||
+      q.includes("حساس")
+    ) {
+
+      return `
+        🥜 بالتأكيد.<br><br>
+
+        يمكن لفريق YourBrand مساعدتك في اختيار
+        المنتجات المناسبة وتسجيل تفضيلاتك أو أي
+        ملاحظات خاصة بالطلب.
+      `;
+
+    }
+
+
+    /* Fresh pastries */
+
+    if (
+      q.includes("fresh") ||
+      q.includes("daily") ||
+      q.includes("طازج") ||
+      q.includes("يوميا") ||
+      q.includes("يوميًا")
+    ) {
+
+      return `
+        🥐 نعم، يتم تحضير المعجنات الطازجة
+        داخل الكافيه كل صباح باستخدام مكونات عالية الجودة.
+      `;
+
+    }
+
+
+    /* Location */
+
+    if (
+      q.includes("location") ||
+      q.includes("where") ||
+      q.includes("address") ||
+      q.includes("مكان") ||
+      q.includes("فين") ||
+      q.includes("عنوان")
+    ) {
+
+      return `
+        📍 YourBrand موجود في <strong>Cairo, Egypt</strong>.<br><br>
+
+        يمكنك استخدام الخريطة الموجودة في قسم
+        <strong>Visit Us</strong> للوصول إلى الموقع.
+      `;
+
+    }
+
+
+    /* Price */
+
+    if (
+      q.includes("price") ||
+      q.includes("prices") ||
+      q.includes("cost") ||
+      q.includes("السعر") ||
+      q.includes("الأسعار") ||
+      q.includes("بكام") ||
+      q.includes("كام")
+    ) {
+
+      return `
+        💰 الأسعار تختلف حسب المنتج.<br><br>
+
+        يمكنك الدخول إلى قسم <strong>Menu</strong>
+        لرؤية المنتجات والأسعار الحالية وإضافة أي منتج إلى السلة.
+      `;
+
+    }
+
+
+    /* Menu */
+
+    if (
+      q.includes("menu") ||
+      q.includes("منيو") ||
+      q.includes("القائمة") ||
+      q.includes("قائمة")
+    ) {
+
+      return `
+        📋 منيو YourBrand تشمل:<br><br>
+
+        ☕ Coffee<br>
+        ☕ Espresso<br>
+        🔥 Hot Drinks<br>
+        🧊 Cold Drinks<br>
+        🍰 Desserts<br>
+        🥐 Breakfast<br>
+        🥪 Sandwiches
+      `;
+
+    }
+
+
+    /* Cart */
+
+    if (
+      q.includes("cart") ||
+      q.includes("سلة") ||
+      q.includes("العربة") ||
+      q.includes("طلب")
+    ) {
+
+      return `
+        🛒 يمكنك إضافة المنتجات إلى السلة
+        مباشرة من قسم <strong>Menu</strong>.<br><br>
+
+        وبعدها يمكنك مراجعة طلبك من قسم
+        <strong>Cart</strong> ثم الانتقال إلى Checkout.
+      `;
+
+    }
+
+
+    /* Contact */
+
+    if (
+      q.includes("contact") ||
+      q.includes("تواصل") ||
+      q.includes("اتصال") ||
+      q.includes("احجز") ||
+      q.includes("حجز")
+    ) {
+
+      return `
+        📞 يمكنك التواصل مع YourBrand
+        من خلال قسم <strong>Contact</strong> الموجود في الموقع،
+        كما يمكنك استخدام الخريطة لمعرفة موقع الكافيه.
+      `;
+
+    }
+
+
+    /* Atmosphere */
+
+    if (
+      q.includes("atmosphere") ||
+      q.includes("ambience") ||
+      q.includes("vibe") ||
+      q.includes("أجواء") ||
+      q.includes("جو") ||
+      q.includes("المكان")
+    ) {
+
+      return `
+        لدينا تشكيلات متنوعة من المشروبات تضم
+       ,مشروبات ساخنة مثل Golden Cappuccino,Velvet Espresso,
+       مشروبات باردة مثل Cloud LatteوSaffron Chai
+      `;
+
+    }
+
+
+    /* Stats */
+
+    if (
+      q.includes("years") ||
+      q.includes("recipes") ||
+      q.includes("partnership") ||
+      q.includes("سنين") ||
+      q.includes("سنوات") ||
+      q.includes("وصفات")
+    ) {
+
+      return `
+        📊 بعض أرقام YourBrand:<br><br>
+
+        <strong>${yourBrandKnowledge.years}</strong> سنة من الخبرة<br>
+        <strong>${yourBrandKnowledge.recipes}</strong> وصفة مميزة<br>
+        <strong>${yourBrandKnowledge.partnerships}</strong> شراكة عالمية<br>
+        <strong>${yourBrandKnowledge.satisfaction}%</strong> رضا الضيوف
+      `;
+
+    }
+
+
+    /* Goodbye */
+
+    if (
+      q.includes("bye") ||
+      q.includes("goodbye") ||
+      q.includes("شكرا") ||
+      q.includes("شكرًا") ||
+      q.includes("سلام")
+    ) {
+
+      return `
+        العفو ❤️☕<br>
+        سعيد بمساعدتك، وننتظرك في <strong>YourBrand</strong>.
+      `;
+
+    }
+
+
+    /* Default */
+
+    return `
+      أفهم سؤالك، لكن المعلومات المتاحة لي حاليًا
+      خاصة بـ <strong>YourBrand</strong> فقط ☕.<br><br>
+
+      أقدر أساعدك في:<br>
+
+      • المنيو والمنتجات<br>
+      • القهوة والمشروبات<br>
+      • الحلويات<br>
+      • الإفطار<br>
+      • العروض الخاصة<br>
+      • الأسعار<br>
+      • الطلب والسلة<br>
+      • موقع الكافيه<br>
+      • أجواء YourBrand
+    `;
+
+  }
+
+
+  /* ---------------------------------------------------------
+     SEND QUESTION
+     --------------------------------------------------------- */
+
+  function askAI(question) {
+
+    const cleanQuestion = question.trim();
+
+    if (!cleanQuestion) return;
+
+
+    addMessage(cleanQuestion, "user");
+
+    aiInput.value = "";
+
+    showTyping();
+
+
+    /*
+      Simulated thinking delay
+      Makes the assistant feel more natural.
+    */
+
+    setTimeout(() => {
+
+      removeTyping();
+
+      const answer = getAIResponse(cleanQuestion);
+
+      addMessage(answer, "bot");
+
+    }, 650);
+
+  }
+
+
+  /* ---------------------------------------------------------
+     FORM SUBMIT
+     --------------------------------------------------------- */
+
+  aiForm.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+    askAI(aiInput.value);
+
+  });
+
+
+  /* ---------------------------------------------------------
+     QUICK QUESTIONS
+     --------------------------------------------------------- */
+
+  aiSuggestions.addEventListener("click", (event) => {
+
+    const button = event.target.closest("button");
+
+    if (!button) return;
+
+    const question = button.dataset.question;
+
+    if (question) {
+      askAI(question);
+    }
+
+  });
+
+
+  /* ---------------------------------------------------------
+     ENTER KEY
+     --------------------------------------------------------- */
+
+  aiInput.addEventListener("keydown", (event) => {
+
+    if (event.key === "Enter") {
+
+      event.preventDefault();
+
+      askAI(aiInput.value);
+
+    }
+
+  });
+
+});
