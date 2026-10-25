@@ -211,7 +211,7 @@ let theme = localStorage.getItem('yourBrandTheme') || 'light';
 let currentCategory = 'all';
 let currentSearch = '';
 
-const currency = new Intl.NumberFormat('en-SA', { style: 'currency', currency: 'SAR' });
+const currency = new Intl.NumberFormat('en-SA', { style: 'currency', currency: 'USD' });
 
 function formatPrice(value) {
   return currency.format(value);
