@@ -1271,9 +1271,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
 
       return `
-        لدينا تشكيلات متنوعة من المشروبات تضم
-       ,مشروبات ساخنة مثل Golden Cappuccino,Velvet Espresso,
-       مشروبات باردة مثل Cloud LatteوSaffron Chai
+       
+لدينا اجواء فريدة ومميزة ليس لها وصف ولا مثيل.
+
       `;
 
     }
