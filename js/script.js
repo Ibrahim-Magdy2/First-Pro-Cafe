@@ -94,7 +94,17 @@ const translations = {
     'newsletter.title': 'Stay in the loop for rare drops',
     'newsletter.btn': 'Join now',
     'instagram.eyebrow': 'Instagram',
-    'instagram.title': 'Follow the mood'
+    'instagram.title': 'Follow the mood',
+    'AI.eyebrow':'YourBrand AI',
+    'AI.title':'AI Café Assistant',
+    'AI.welcome':'Welcome to YourBrand ☕',
+'AI.identification':"I'm your smart assistant. I can help you with the menu, prices, drinks, desserts, orders, and cafe information.",
+'AI.Drinks':'☕ Drinks',
+'AI.Desserts':'🍰 Sweets',
+'AI.Prices':'💰 Prices',
+'About Cafe':'✨ About the cafe',
+
+
   },
   ar: {
     'nav.home': 'الرئيسية',
@@ -191,17 +201,26 @@ const translations = {
     'newsletter.title': 'تابع آخر الإصدارات الخاصة',
     'newsletter.btn': 'انضم الآن',
     'instagram.eyebrow': 'إنستغرام',
-    'instagram.title': 'تابع الحالة'
+    'instagram.title': 'تابع الحالة',
+    'AI.eyebrow':'مساعد علامتك التجارية',
+    'AI.title':'مساعد مقهى يعمل بالذكاء الاصطناعي',
+'AI.welcome':'أهلاً بك في YourBrand ☕',
+'AI.identification':'أنا مساعدك الذكي. أقدر أساعدك في المنيو، الأسعار، المشروبات، الحلويات، الطلبات ومعلومات الكافيه.',
+'AI.Drinks':'☕ المشروبات',
+'AI.Desserts':'🍰 الحلويات',
+'AI.Prices':'💰 الأسعار',
+'About Cafe':'✨ عن الكافيه',
+
   }
 };
 
 const products = [
   { id: 1, name: 'Golden Cappuccino', price: 70, category: 'Coffee', image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80', description: 'Rich espresso crowned with velvety foam and delicate cocoa dust.', rating: 4.9, new: true, bestseller: true, available: true },
   { id: 2, name: 'Velvet Espresso', price: 50, category: 'Espresso', image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80', description: 'A precise double shot with caramel body and luxurious crema.', rating: 4.8, new: false, bestseller: true, available: true },
-  { id: 3, name: 'Saffron Chai', price: 60, category: 'Hot Drinks', image: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=900&q=80', description: 'High-toned warming blend with spiced silk and golden finish.', rating: 4.7, new: true, bestseller: false, available: true },
+  { id: 3, name: 'Saffron Chai', price: 60, category: 'Hot Drinks', image: 'pexels-alexeydemidov-10614498.jpg', description: 'High-toned warming blend with spiced silk and golden finish.', rating: 4.7, new: true, bestseller: false, available: true },
   { id: 4, name: 'Cloud Latte', price: 90, category: 'Cold Drinks', image: 'pexels-bentonphotocinema-15086185.jpg', description: 'Smooth chilled espresso layered with vanilla cream and citrus zest.', rating: 4.9, new: false, bestseller: true, available: true },
   { id: 5, name: 'Midnight Tiramisu', price: 80, category: 'Desserts', image: 'pexels-valeriya-27305271.jpg', description: 'Dark cocoa structure, creamy layers and elegant coffee notes.', rating: 4.8, new: true, bestseller: false, available: true },
-  { id: 6, name: 'Royal Brioche', price: 85, category: 'Breakfast', image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=80', description: 'Butter-rich toast finished with lavender honey and house jam.', rating: 4.6, new: false, bestseller: true, available: true },
+  { id: 6, name: 'Royal Brioche', price: 85, category: 'Breakfast', image: 'pexels-valeriya-19803486.jpg', description: 'Butter-rich toast finished with lavender honey and house jam.', rating: 4.6, new: false, bestseller: true, available: true },
   { id: 7, name: 'Crown Club Sandwich', price: 210, category: 'Sandwiches', image: 'pexels-asadphoto-29346178.jpg', description: 'Layered gourmet sandwich with truffle aioli and crisp greens.', rating: 4.9, new: true, bestseller: true, available: true }
 ];
 
@@ -865,482 +884,253 @@ document.addEventListener("DOMContentLoaded", () => {
      --------------------------------------------------------- */
 
   function getAIResponse(question) {
-
-    const q = question
-      .toLowerCase()
-      .trim();
-
-
-    /* Greeting */
-
-    if (
-      q.includes("hello") ||
-      q.includes("hi") ||
-      q.includes("hey") ||
-      q.includes("مرحبا") ||
-      q.includes("اهلا") ||
-      q.includes("أهلا") ||
-      q.includes("السلام عليكم")
-    ) {
-
-      return `
-        أهلاً وسهلاً بك في <strong>YourBrand</strong> ☕✨<br>
-        أنا مساعد YourBrand، ويمكنني مساعدتك في معرفة المنيو، المشروبات، الحلويات، العروض ومعلومات الكافيه.
-      `;
-
-    }
-
-
-    /* About */
-
-    if (
-      q.includes("about") ||
-      q.includes("yourbrand") ||
-      q.includes("who are you") ||
-      q.includes("عن الكافيه") ||
-      q.includes("عن الكافى") ||
-      q.includes("معلومات عن") ||
-      q.includes("مين انت")
-    ) {
-
-      return `
-        <strong>YourBrand</strong> هو كافيه فاخر بتجربة عصرية راقية ☕✨<br><br>
-
-        نقدم القهوة المختصة، المشروبات، الحلويات المميزة،
-        الإفطار والساندويتشات في أجواء هادئة وأنيقة.
-      `;
-
-    }
-
-
-    /* Coffee */
-
-    if (
-      q.includes("coffee") ||
-      q.includes("قهوة") ||
-      q.includes("كوفي") ||
-      q.includes("مشروبات القهوة")
-    ) {
-
-      return `
-        ☕ <strong>القهوة في YourBrand</strong><br><br>
-
-        نعتمد على حبوب مختارة بعناية ونقدم تجربة قهوة متوازنة وغنية.<br><br>
-
-        لدينا اختيارات مثل:
-        <br>• Espresso
-        <br>• Signature Coffee
-        <br>• Latte
-        <br>• Crowned Oat Latte
-      `;
-
-    }
-
-
-    /* Espresso */
-
-    if (
-      q.includes("espresso") ||
-      q.includes("إسبريسو") ||
-      q.includes("اسبريسو")
-    ) {
-
-      return `
-        ☕ نعم، لدينا قسم خاص بـ <strong>Espresso</strong>
-        ضمن قائمة YourBrand.<br><br>
-
-        يمكنك مشاهدة جميع الاختيارات والأسعار من قسم
-        <strong>Menu</strong>.
-      `;
-
-    }
-
-
-    /* Hot drinks */
-
-    if (
-      q.includes("hot drink") ||
-      q.includes("hot drinks") ||
-      q.includes("مشروبات ساخنة") ||
-      q.includes("ساخن")
-    ) {
-
-      return `
-        🔥 لدينا مجموعة من المشروبات الساخنة،
-        بالإضافة إلى المشروبات المعتمدة على الإسبريسو والـ premium hot chocolate.
-      `;
-
-    }
-
-
-    /* Cold drinks */
-
-    if (
-      q.includes("cold drink") ||
-      q.includes("cold drinks") ||
-      q.includes("مشروبات باردة") ||
-      q.includes("بارد")
-    ) {
-
-      return `
-        🧊 لدينا مجموعة من المشروبات الباردة داخل قائمة YourBrand.
-        يمكنك تصفح قسم <strong>Cold Drinks</strong> لمعرفة المنتجات المتاحة.
-      `;
-
-    }
-
-
-    /* Desserts */
-
-    if (
-      q.includes("dessert") ||
-      q.includes("desserts") ||
-      q.includes("حلويات") ||
-      q.includes("حلو") ||
-      q.includes("كيك") ||
-      q.includes("cake")
-    ) {
-
-      return `
-        🍰 <strong>حلويات YourBrand</strong><br><br>
-
-        نقدم حلويات ومعجنات مصنوعة بعناية، ومن أشهر الاختيارات لدينا:<br>
-
-        • Velvet Burnt Cheesecake<br>
-        • Truffle Cake<br>
-        • Handcrafted Pastries<br>
-        • Seasonal Bakery
-      `;
-
-    }
-
-
-    /* Breakfast */
-
-    if (
-      q.includes("breakfast") ||
-      q.includes("فطار") ||
-      q.includes("إفطار") ||
-      q.includes("افطار")
-    ) {
-
-      return `
-        🥐 YourBrand يقدم مجموعة من اختيارات الإفطار
-        المصنوعة من مكونات موسمية مع تقديم فاخر.
-      `;
-
-    }
-
-
-    /* Sandwich */
-
-    if (
-      q.includes("sandwich") ||
-      q.includes("sandwiches") ||
-      q.includes("ساندوتش") ||
-      q.includes("ساندويتش")
-    ) {
-
-      return `
-        🥪 نعم، يوجد قسم خاص بالـ <strong>Sandwiches</strong>
-        داخل قائمة YourBrand.
-      `;
-
-    }
-
-
-    /* Popular */
-
-    if (
-      q.includes("popular") ||
-      q.includes("best") ||
-      q.includes("recommend") ||
-      q.includes("مشهور") ||
-      q.includes("الأفضل") ||
-      q.includes("افضل") ||
-      q.includes("ترشح")
-    ) {
-
-      return `
-        ⭐ من الاختيارات الشعبية في YourBrand:<br><br>
-
-        • <strong>Crowned Oat Latte</strong><br>
-        • <strong>Velvet Burnt Cheesecake</strong><br>
-        • <strong>Golden Brioche Toast</strong>
-      `;
-
-    }
-
-
-    /* Special offer */
-
-    if (
-      q.includes("special") ||
-      q.includes("offer") ||
-      q.includes("offers") ||
-      q.includes("عرض") ||
-      q.includes("العرض") ||
-      q.includes("عروض")
-    ) {
-
-      return `
-        ✨ <strong>Today's Special</strong><br><br>
-
-        Cocoa Velvet & Vanilla Cloud 🍫<br><br>
-
-        تجربة تذوق مميزة تشمل:
-        <br>• Premium Hot Chocolate
-        <br>• Truffle Cake
-        <br>• House-exclusive Latte Art Performance
-      `;
-
-    }
-
-
-    /* Takeaway */
-
-    if (
-      q.includes("takeaway") ||
-      q.includes("take away") ||
-      q.includes("تيك اواي") ||
-      q.includes("تيك أواي") ||
-      q.includes("خارج")
-    ) {
-
-      return `
-        🛍️ نعم، YourBrand يدعم خدمة <strong>Take-away</strong>
-        بالإضافة إلى تجربة الـ Lounge Dining.
-      `;
-
-    }
-
-
-    /* Allergy */
-
-    if (
-      q.includes("allergy") ||
-      q.includes("allergic") ||
-      q.includes("حساسية") ||
-      q.includes("حساس")
-    ) {
-
-      return `
-        🥜 بالتأكيد.<br><br>
-
-        يمكن لفريق YourBrand مساعدتك في اختيار
-        المنتجات المناسبة وتسجيل تفضيلاتك أو أي
-        ملاحظات خاصة بالطلب.
-      `;
-
-    }
-
-
-    /* Fresh pastries */
-
-    if (
-      q.includes("fresh") ||
-      q.includes("daily") ||
-      q.includes("طازج") ||
-      q.includes("يوميا") ||
-      q.includes("يوميًا")
-    ) {
-
-      return `
-        🥐 نعم، يتم تحضير المعجنات الطازجة
-        داخل الكافيه كل صباح باستخدام مكونات عالية الجودة.
-      `;
-
-    }
-
-
-    /* Location */
-
-    if (
-      q.includes("location") ||
-      q.includes("where") ||
-      q.includes("address") ||
-      q.includes("مكان") ||
-      q.includes("فين") ||
-      q.includes("عنوان")
-    ) {
-
-      return `
-        📍 YourBrand موجود في <strong>Cairo, Egypt</strong>.<br><br>
-
-        يمكنك استخدام الخريطة الموجودة في قسم
-        <strong>Visit Us</strong> للوصول إلى الموقع.
-      `;
-
-    }
-
-
-    /* Price */
-
-    if (
-      q.includes("price") ||
-      q.includes("prices") ||
-      q.includes("cost") ||
-      q.includes("السعر") ||
-      q.includes("الأسعار") ||
-      q.includes("بكام") ||
-      q.includes("كام")
-    ) {
-
-      return `
-        💰 الأسعار تختلف حسب المنتج.<br><br>
-
-        يمكنك الدخول إلى قسم <strong>Menu</strong>
-        لرؤية المنتجات والأسعار الحالية وإضافة أي منتج إلى السلة.
-      `;
-
-    }
-
-
-    /* Menu */
-
-    if (
-      q.includes("menu") ||
-      q.includes("منيو") ||
-      q.includes("القائمة") ||
-      q.includes("قائمة")
-    ) {
-
-      return `
-        📋 منيو YourBrand تشمل:<br><br>
-
-        ☕ Coffee<br>
-        ☕ Espresso<br>
-        🔥 Hot Drinks<br>
-        🧊 Cold Drinks<br>
-        🍰 Desserts<br>
-        🥐 Breakfast<br>
-        🥪 Sandwiches
-      `;
-
-    }
-
-
-    /* Cart */
-
-    if (
-      q.includes("cart") ||
-      q.includes("سلة") ||
-      q.includes("العربة") ||
-      q.includes("طلب")
-    ) {
-
-      return `
-        🛒 يمكنك إضافة المنتجات إلى السلة
-        مباشرة من قسم <strong>Menu</strong>.<br><br>
-
-        وبعدها يمكنك مراجعة طلبك من قسم
-        <strong>Cart</strong> ثم الانتقال إلى Checkout.
-      `;
-
-    }
-
-
-    /* Contact */
-
-    if (
-      q.includes("contact") ||
-      q.includes("تواصل") ||
-      q.includes("اتصال") ||
-      q.includes("احجز") ||
-      q.includes("حجز")
-    ) {
-
-      return `
-        📞 يمكنك التواصل مع YourBrand
-        من خلال قسم <strong>Contact</strong> الموجود في الموقع،
-        كما يمكنك استخدام الخريطة لمعرفة موقع الكافيه.
-      `;
-
-    }
-
-
-    /* Atmosphere */
-
-    if (
-      q.includes("atmosphere") ||
-      q.includes("ambience") ||
-      q.includes("vibe") ||
-      q.includes("أجواء") ||
-      q.includes("جو") ||
-      q.includes("المكان")
-    ) {
-
-      return `
-       
-لدينا اجواء فريدة ومميزة ليس لها وصف ولا مثيل.
-
-      `;
-
-    }
-
-
-    /* Stats */
-
-    if (
-      q.includes("years") ||
-      q.includes("recipes") ||
-      q.includes("partnership") ||
-      q.includes("سنين") ||
-      q.includes("سنوات") ||
-      q.includes("وصفات")
-    ) {
-
-      return `
-        📊 بعض أرقام YourBrand:<br><br>
-
-        <strong>${yourBrandKnowledge.years}</strong> سنة من الخبرة<br>
-        <strong>${yourBrandKnowledge.recipes}</strong> وصفة مميزة<br>
-        <strong>${yourBrandKnowledge.partnerships}</strong> شراكة عالمية<br>
-        <strong>${yourBrandKnowledge.satisfaction}%</strong> رضا الضيوف
-      `;
-
-    }
-
-
-    /* Goodbye */
-
-    if (
-      q.includes("bye") ||
-      q.includes("goodbye") ||
-      q.includes("شكرا") ||
-      q.includes("شكرًا") ||
-      q.includes("سلام")
-    ) {
-
-      return `
-        العفو ❤️☕<br>
-        سعيد بمساعدتك، وننتظرك في <strong>YourBrand</strong>.
-      `;
-
-    }
-
-
-    /* Default */
-
-    return `
-      أفهم سؤالك، لكن المعلومات المتاحة لي حاليًا
-      خاصة بـ <strong>YourBrand</strong> فقط ☕.<br><br>
-
-      أقدر أساعدك في:<br>
-
-      • المنيو والمنتجات<br>
-      • القهوة والمشروبات<br>
-      • الحلويات<br>
-      • الإفطار<br>
-      • العروض الخاصة<br>
-      • الأسعار<br>
-      • الطلب والسلة<br>
-      • موقع الكافيه<br>
-      • أجواء YourBrand
-    `;
-
-  }
-
+  const q = question.toLowerCase().trim();
+  const isArabic = language === "ar";
+
+  const replies = {
+    greeting: `
+      أهلاً وسهلاً بك في <strong>YourBrand</strong> ☕✨<br>
+      أنا مساعد YourBrand، ويمكنني مساعدتك في معرفة المنيو والمشروبات والحلويات والعروض ومعلومات الكافيه.
+    `,
+    about: `
+      <strong>YourBrand</strong> هو كافيه فاخر بتجربة عصرية راقية ☕✨<br><br>
+      نقدم القهوة المختصة والمشروبات والحلويات المميزة والإفطار والساندويتشات في أجواء هادئة وأنيقة.
+    `,
+    coffee: `
+      ☕ <strong>القهوة في YourBrand</strong><br><br>
+      نقدم تجربة قهوة متوازنة وغنية باستخدام حبوب مختارة بعناية.<br><br>
+      • Espresso<br>
+      • Signature Coffee<br>
+      • Latte<br>
+      • Crowned Oat Latte
+    `,
+    espresso: `
+      ☕ لدينا قسم خاص بـ <strong>Espresso</strong> ضمن قائمة YourBrand.<br><br>
+      يمكنك مشاهدة الاختيارات والأسعار من قسم <strong>Menu</strong>.
+    `,
+    hot: `
+      🔥 لدينا مجموعة من المشروبات الساخنة، بالإضافة إلى مشروبات الإسبريسو والشوكولاتة الساخنة المميزة.
+    `,
+    cold: `
+      🧊 لدينا مجموعة من المشروبات الباردة داخل قائمة YourBrand. يمكنك تصفح قسم <strong>Cold Drinks</strong> لمعرفة الاختيارات المتاحة.
+    `,
+    desserts: `
+      🍰 <strong>حلويات YourBrand</strong><br><br>
+      نقدم حلويات ومعجنات مميزة، ومنها:<br>
+      • Velvet Burnt Cheesecake<br>
+      • Truffle Cake<br>
+      • Handcrafted Pastries<br>
+      • Seasonal Bakery
+    `,
+    breakfast: `
+      🥐 يقدم YourBrand مجموعة من اختيارات الإفطار المحضرة من مكونات موسمية والمقدمة بأسلوب راقٍ.
+    `,
+    sandwich: `
+      🥪 نعم، يوجد قسم خاص بالساندويتشات <strong>Sandwiches</strong> داخل قائمة YourBrand.
+    `,
+    popular: `
+      ⭐ من الاختيارات المميزة في YourBrand:<br><br>
+      • <strong>Crowned Oat Latte</strong><br>
+      • <strong>Velvet Burnt Cheesecake</strong><br>
+      • <strong>Golden Brioche Toast</strong>
+    `,
+    offer: `
+      ✨ <strong>عرض اليوم</strong><br><br>
+      Cocoa Velvet & Vanilla Cloud 🍫<br><br>
+      تجربة تذوق تشمل:<br>
+      • Premium Hot Chocolate<br>
+      • Truffle Cake<br>
+      • House-exclusive Latte Art Performance
+    `,
+    takeaway: `
+      🛍️ نعم، يدعم YourBrand خدمة <strong>Take-away</strong> بالإضافة إلى تناول الطعام داخل الكافيه.
+    `,
+    allergy: `
+      🥜 يمكن لفريق YourBrand مساعدتك في معرفة المكونات وتسجيل تفضيلاتك أو ملاحظاتك الخاصة بالطلب. يُرجى التأكد من الفريق مباشرة بشأن مسببات الحساسية.
+    `,
+    fresh: `
+      🥐 يتم تحضير المعجنات الطازجة يوميًا وفقًا للمعلومات المتاحة عن YourBrand.
+    `,
+    location: `
+      📍 يقع YourBrand في <strong>Cairo, Egypt</strong>.<br><br>
+      يمكنك الاطلاع على الخريطة في قسم <strong>Visit Us</strong>.
+    `,
+    price: `
+      💰 تختلف الأسعار حسب المنتج.<br><br>
+      تفضل بزيارة قسم <strong>Menu</strong> للاطلاع على الأسعار وإضافة المنتجات إلى السلة.
+    `,
+    menu: `
+      📋 تشمل قائمة YourBrand:<br><br>
+      ☕ Coffee<br>
+      ☕ Espresso<br>
+      🔥 Hot Drinks<br>
+      🧊 Cold Drinks<br>
+      🍰 Desserts<br>
+      🥐 Breakfast<br>
+      🥪 Sandwiches
+    `,
+    cart: `
+      🛒 يمكنك إضافة المنتجات إلى السلة من قسم <strong>Menu</strong>، ثم مراجعة طلبك في <strong>Cart</strong> والانتقال إلى <strong>Checkout</strong>.
+    `,
+    contact: `
+      📞 يمكنك الاطلاع على معلومات التواصل والخريطة في أقسام <strong>Contact</strong> و<strong>Visit Us</strong> بالموقع.
+    `,
+    atmosphere: `
+      ✨ يتميز YourBrand بأجواء فريدة تجمع بين الأناقة والراحة والطابع العصري.
+    `,
+    stats: `
+      📊 بعض أرقام YourBrand:<br><br>
+      <strong>${yourBrandKnowledge.years}</strong> سنة من الخبرة<br>
+      <strong>${yourBrandKnowledge.recipes}</strong> وصفة مميزة<br>
+      <strong>${yourBrandKnowledge.partnerships}</strong> شراكة<br>
+      <strong>${yourBrandKnowledge.satisfaction}%</strong> رضا الضيوف
+    `,
+    goodbye: `
+      العفو ❤️☕<br>
+      سعيد بمساعدتك، وننتظرك في <strong>YourBrand</strong>.
+    `,
+    default: `
+      أقدر أساعدك في معلومات YourBrand ☕، مثل المنيو والقهوة والمشروبات والحلويات والإفطار والعروض والأسعار والسلة وموقع الكافيه.
+    `
+  };
+
+  const englishReplies = {
+    greeting: `
+      Welcome to <strong>YourBrand</strong> ☕✨<br>
+      I'm the YourBrand assistant. I can help you explore our menu, drinks, desserts, offers, and café information.
+    `,
+    about: `
+      <strong>YourBrand</strong> is a premium café with a refined, modern atmosphere ☕✨<br><br>
+      We feature specialty coffee, signature drinks, desserts, breakfast, and sandwiches in a relaxing setting.
+    `,
+    coffee: `
+      ☕ <strong>Coffee at YourBrand</strong><br><br>
+      We offer a balanced, rich coffee experience featuring carefully selected beans.<br><br>
+      • Espresso<br>
+      • Signature Coffee<br>
+      • Latte<br>
+      • Crowned Oat Latte
+    `,
+    espresso: `
+      ☕ Our <strong>Menu</strong> includes an Espresso section.<br><br>
+      Visit the Menu section to explore available options and prices.
+    `,
+    hot: `
+      🔥 We offer a selection of hot drinks, including espresso-based beverages and premium hot chocolate.
+    `,
+    cold: `
+      🧊 Explore the <strong>Cold Drinks</strong> section of our menu to see the available options.
+    `,
+    desserts: `
+      🍰 <strong>YourBrand Desserts</strong><br><br>
+      Explore our selection of desserts and pastries, including:<br>
+      • Velvet Burnt Cheesecake<br>
+      • Truffle Cake<br>
+      • Handcrafted Pastries<br>
+      • Seasonal Bakery
+    `,
+    breakfast: `
+      🥐 YourBrand offers a selection of breakfast options prepared with seasonal ingredients and presented with care.
+    `,
+    sandwich: `
+      🥪 Yes! You can explore our sandwich selection in the <strong>Menu</strong> section.
+    `,
+    popular: `
+      ⭐ Some featured choices at YourBrand include:<br><br>
+      • <strong>Crowned Oat Latte</strong><br>
+      • <strong>Velvet Burnt Cheesecake</strong><br>
+      • <strong>Golden Brioche Toast</strong>
+    `,
+    offer: `
+      ✨ <strong>Today's Special</strong><br><br>
+      Cocoa Velvet & Vanilla Cloud 🍫<br><br>
+      A tasting experience featuring:<br>
+      • Premium Hot Chocolate<br>
+      • Truffle Cake<br>
+      • House-exclusive Latte Art Performance
+    `,
+    takeaway: `
+      🛍️ Yes! YourBrand supports <strong>takeaway</strong> as well as dining inside the café.
+    `,
+    allergy: `
+      🥜 Our team can help you check ingredients and note your preferences. Please confirm directly with the team about any allergens before ordering.
+    `,
+    fresh: `
+      🥐 Fresh pastries are described as being prepared daily, according to the information provided for YourBrand.
+    `,
+    location: `
+      📍 YourBrand is located in <strong>Cairo, Egypt</strong>.<br><br>
+      You can view the map in the <strong>Visit Us</strong> section.
+    `,
+    price: `
+      💰 Prices vary by product.<br><br>
+      Visit the <strong>Menu</strong> section to view prices and add products to your cart.
+    `,
+    menu: `
+      📋 The YourBrand menu includes:<br><br>
+      ☕ Coffee<br>
+      ☕ Espresso<br>
+      🔥 Hot Drinks<br>
+      🧊 Cold Drinks<br>
+      🍰 Desserts<br>
+      🥐 Breakfast<br>
+      🥪 Sandwiches
+    `,
+    cart: `
+      🛒 Add products from the <strong>Menu</strong>, review your order in the <strong>Cart</strong>, and continue to <strong>Checkout</strong>.
+    `,
+    contact: `
+      📞 Check the <strong>Contact</strong> and <strong>Visit Us</strong> sections for the available contact information and map.
+    `,
+    atmosphere: `
+      ✨ YourBrand offers a distinctive atmosphere that combines elegance, comfort, and modern style.
+    `,
+    stats: `
+      📊 Some YourBrand figures:<br><br>
+      <strong>${yourBrandKnowledge.years}</strong> years of experience<br>
+      <strong>${yourBrandKnowledge.recipes}</strong> signature recipes<br>
+      <strong>${yourBrandKnowledge.partnerships}</strong> partnerships<br>
+      <strong>${yourBrandKnowledge.satisfaction}%</strong> guest satisfaction
+    `,
+    goodbye: `
+      You're welcome! ❤️☕<br>
+      We're happy to help and hope to see you at <strong>YourBrand</strong>.
+    `,
+    default: `
+      I can help you learn about YourBrand ☕, including our menu, coffee, drinks, desserts, breakfast, offers, prices, cart, and location.
+    `
+  };
+
+  const has = (...terms) => terms.some(term => q.includes(term));
+
+  let key = "default";
+
+  if (has("hello", "hi", "hey", "مرحبا", "اهلا", "أهلا", "السلام عليكم")) key = "greeting";
+  else if (has("who are you", "about", "yourbrand", "عن الكافيه", "عن الكافى", "معلومات عن", "مين انت")) key = "about";
+  else if (has("espresso", "إسبريسو", "اسبريسو")) key = "espresso";
+  else if (has("coffee", "قهوة", "كوفي", "مشروبات القهوة")) key = "coffee";
+  else if (has("hot drink", "hot drinks", "مشروبات ساخنة", "ساخن")) key = "hot";
+  else if (has("cold drink", "cold drinks", "مشروبات باردة", "بارد")) key = "cold";
+  else if (has("dessert", "desserts", "حلويات", "حلو", "كيك", "cake")) key = "desserts";
+  else if (has("breakfast", "فطار", "إفطار", "افطار")) key = "breakfast";
+  else if (has("sandwich", "sandwiches", "ساندوتش", "ساندويتش")) key = "sandwich";
+  else if (has("popular", "best", "recommend", "مشهور", "الأفضل", "افضل", "ترشح")) key = "popular";
+  else if (has("special", "offer", "offers", "عرض", "العرض", "عروض")) key = "offer";
+  else if (has("takeaway", "take away", "تيك اواي", "تيك أواي", "خارج")) key = "takeaway";
+  else if (has("allergy", "allergic", "حساسية", "حساس")) key = "allergy";
+  else if (has("fresh", "daily", "طازج", "يوميا", "يوميًا")) key = "fresh";
+  else if (has("location", "where", "address", "مكان", "فين", "عنوان")) key = "location";
+  else if (has("price", "prices", "cost", "السعر", "الأسعار", "بكام", "كام")) key = "price";
+  else if (has("menu", "منيو", "القائمة", "قائمة")) key = "menu";
+  else if (has("cart", "سلة", "العربة", "طلب")) key = "cart";
+  else if (has("contact", "تواصل", "اتصال", "احجز", "حجز")) key = "contact";
+  else if (has("atmosphere", "ambience", "vibe", "أجواء", "جو", "المكان")) key = "atmosphere";
+  else if (has("years", "recipes", "partnership", "سنين", "سنوات", "وصفات")) key = "stats";
+  else if (has("bye", "goodbye", "شكرا", "شكرًا", "سلام")) key = "goodbye";
+
+  if (isArabic) return replies[key];
+  return englishReplies[key];
+}
 
   /* ---------------------------------------------------------
      SEND QUESTION
